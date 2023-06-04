@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:telas/telas/telaChat.dart';
 
-class telaLogin extends StatelessWidget {
-  const telaLogin({super.key});
+
+class telaLogin extends StatefulWidget {
+  @override
+  _telaLogin createState() => _telaLogin();
+}
+
+class _telaLogin extends  State<telaLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController senhaController = TextEditingController();
        
-      home: Scaffold(
+      return Scaffold(
+  appBar: AppBar(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+        toolbarHeight: 30,
+      ),
         body: Stack(
           children: [
-            Expanded(child:
-            Container(color: Color.fromARGB(45 , 45, 45, 100),
+            Expanded(
             child : Center(
               child: Container(
                 padding: EdgeInsets.only(top: 350),
@@ -19,15 +30,14 @@ class telaLogin extends StatelessWidget {
               ),
             ),
             ),
-            ),
+            
              Center(
               
               child: Container(
                  
                 height: 200,
                 width: 200,
-                child : const Icon(Icons.rocket_launch,
-                size: 50,),
+                child :  Image.asset('assets/images/Logo_Omnichan.png')
                 
               ),
             ),
@@ -36,14 +46,18 @@ class telaLogin extends StatelessWidget {
                 width: 250,
                 padding: EdgeInsets.only(top: 230),
                 child: TextField(
+                  controller: emailController,
+                                style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   labelText: "Email",
+                                  labelStyle: TextStyle(color: Colors.white),
                                   contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                     
-                                  ),
                                   
+                          
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
                                 ),
                 
                     ),
@@ -54,13 +68,15 @@ class telaLogin extends StatelessWidget {
                 width: 250,
                 padding: EdgeInsets.only(top: 370),
                 child: TextField(
+                  controller: senhaController,
+                                style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   labelText: "Senha",
-                                  
+                                  labelStyle: TextStyle(color: Colors.white),
                                   contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                                  border: OutlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
                                     borderRadius: BorderRadius.circular(30),
-                                     
                                   ),
                                   
                                 ),
@@ -76,20 +92,22 @@ class telaLogin extends StatelessWidget {
                   height: 45,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(23, 185, 188, 100),
+                        
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         )),
                     onPressed: () {
-                      print("nivel1");
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TelaChat()),
+                      );
+                      
                     },
-                    child: Container(
-                        child: Text(
+                    child:  const Text(
                       'Entrar',
                       style: TextStyle(
-                        fontSize: 20,
+                    fontSize: 20,
                       ),
-                        ),
                     ),
                   ),
                 ),
@@ -97,7 +115,24 @@ class telaLogin extends StatelessWidget {
              ),
           ],
         ),
-      ),
+      );
+  }
+}
+
+class TelaLogin extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        
+        colorScheme: ColorScheme.fromSeed(
+         seedColor: Color.fromRGBO(23, 185, 188, 100), 
+
+        ),
+           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
+         ),
+          
+      home: telaLogin(),
     );
   }
 }

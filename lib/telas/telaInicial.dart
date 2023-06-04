@@ -1,52 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:telas/telas/telaCadastro.dart';
+import 'package:telas/telas/telaLogin.dart';
 
-class telaInicial extends StatelessWidget {
-  const telaInicial({super.key});
+class telaInicial extends StatefulWidget {
+  @override
+  _telaInicial createState() => _telaInicial();
+}
+
+class _telaInicial extends State<telaInicial> {
+  
 
   @override
    Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+   
+     return Scaffold(
+      
         body: Stack(
           children: [
-            Expanded(
-              child: Container(
-                color: const Color.fromRGBO(45, 45, 45, 100),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 420),
-                  child: Center(
-                    child: Container(
-                      width: 300,
-                      height: 45,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Color.fromRGBO(23, 185, 188, 100),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            )
-                            ),
-                        onPressed: () {
-                          print("nivel1");
-                        },
-                        child: Container(
-                            child: Text(
-                          'Cadastre-se',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        )),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            Text("Ominichan"),
+            //MUDAR O TAMANHO E A FONTE DEPOIS
+            
             Center(
               child: Container(
                 height: 200,
                 width: 200,
-                child : const Icon(Icons.rocket_launch,
-                size: 50,),
+                child : Image.asset('assets/images/Logo_Omnichan.png')
                 
               ),
             ),
@@ -58,12 +36,15 @@ class telaInicial extends StatelessWidget {
                   height: 45,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(23, 185, 188, 100),
+                      
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         )),
                     onPressed: () {
-                      print("nivel1");
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => telaLogin()),
+                      );
                     },
                     child: Container(
                         child: Text(
@@ -76,9 +57,57 @@ class telaInicial extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+              padding: EdgeInsets.only(top: 680),
+              child: Center(
+                child: Container(
+                  
+                  width: 300,
+                  height: 45,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        )
+                        ),
+                    onPressed: () {
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => telaCadastro()),
+                    );
+                    },
+                    child: Container(
+                        child: Text(
+                      'Cadastre-se',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    )),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
-      ),
+      );
+  }
+}
+
+class TelaInicial extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        
+        colorScheme: ColorScheme.fromSeed(
+         seedColor: Color.fromRGBO(23, 185, 188, 100), 
+
+        ),
+           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
+         ),
+          
+      home: telaInicial(),
     );
   }
 }
