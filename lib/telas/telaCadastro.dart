@@ -22,6 +22,7 @@ class _telaCadastro extends State<telaCadastro> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+    
     elevation: 0,
       ),
       body: Padding(
@@ -145,15 +146,6 @@ class TelaCadastro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(
-         seedColor: Color.fromRGBO(23, 185, 188, 100), 
-
-        ),
-           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
-         ),
-          
       home: telaCadastro(),
     );
   }

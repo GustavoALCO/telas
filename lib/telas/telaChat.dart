@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:telas/telas/TelaMostrarCadastro.dart';
+
 
 class ChatMessage {
   final String sender;
@@ -8,12 +10,21 @@ class ChatMessage {
 }
 
 class ChatScreen extends StatefulWidget {
+ final Contact contact;
+
+  ChatScreen({required this.contact});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
+
+
 class _ChatScreenState extends State<ChatScreen> {
+
+  
   final List<ChatMessage> _messages = [];
+
 
   final TextEditingController _textController = TextEditingController();
 
@@ -23,16 +34,26 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() {
       _messages.insert(0, ChatMessage(sender: 'User', content: text));
       _messages.insert(0,
-          ChatMessage(sender: 'Other Person', content: 'Hello! How are you?'));
+          ChatMessage(sender: widget.contact.name, content: 'Hello! How are you?'));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat'),
+    appBar: AppBar(
+      
+      title: Row(
+        children: [
+          
+          CircleAvatar(
+            backgroundImage: AssetImage(widget.contact.photo),
+          ),
+          SizedBox(width: 8),
+          Text(widget.contact.name),
+        ],
       ),
+    ),
       body: Column(
         children: [
           Expanded(
@@ -104,6 +125,9 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class TelaChat extends StatelessWidget {
+  final Contact contact;
+
+  TelaChat({required this.contact});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -116,7 +140,7 @@ class TelaChat extends StatelessWidget {
            scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
          ),
           
-      home: ChatScreen(),
+      home: ChatScreen(contact: contact,),
     );
   }
 }

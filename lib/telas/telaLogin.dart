@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telas/telaChat.dart';
+import 'package:telas/telas/TelaMostrarCadastro.dart';
+
 
 
 class telaLogin extends StatefulWidget {
@@ -99,7 +100,7 @@ class _telaLogin extends  State<telaLogin> {
                     onPressed: () {
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TelaChat()),
+                      MaterialPageRoute(builder: (context) => telaContato())
                       );
                       
                     },
@@ -124,12 +125,6 @@ class TelaLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(
-         seedColor: Color.fromRGBO(23, 185, 188, 100), 
-
-        ),
-           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
          ),
           
       home: telaLogin(),
