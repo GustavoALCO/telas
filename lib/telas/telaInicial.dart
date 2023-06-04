@@ -17,8 +17,22 @@ class _telaInicial extends State<telaInicial> {
       
         body: Stack(
           children: [
-            Text("Ominichan"),
-            //MUDAR O TAMANHO E A FONTE DEPOIS
+            Align(
+               alignment: Alignment.topCenter,
+              child: Container(
+                padding: const EdgeInsets.only(top: 30),
+                child: Text(
+                  "Ominichan",
+                  style: TextStyle(
+                    fontSize: 24,
+    color: Color.fromRGBO(23, 185, 188, 100),
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.bold, 
+  ),
+                  ),)
+                  ),
+                  
+            
             
             Center(
               child: Container(
