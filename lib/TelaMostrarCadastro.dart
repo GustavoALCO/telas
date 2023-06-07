@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telas/telaChat.dart';
+import 'package:telas/telaChat.dart';
+import 'package:telas/telaprincipal.dart';
 
 class TelaContato extends StatelessWidget {
   @override
@@ -46,6 +47,17 @@ class _ContactsScreenState extends State<telaContato> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Contatos'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_left),
+            onPressed: () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Telaprincipal())
+                        //voltando a tela
+
+                        );
+            },
+          ),
         actions: [
           IconButton(
             icon: Icon(Icons.check_box_outlined),

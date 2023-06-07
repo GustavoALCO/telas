@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:telas/cadastrar_contatos.dart';
-import 'package:telas/mostrar_contatos.dart';
+import 'package:telas/telaprincipal.dart';
+import 'cadastrar_contatos.dart';
+import 'mostrar_contatos.dart';
 
-void main() => runApp(UsuarioScreen());
+
 
 class UsuarioScreen extends StatelessWidget {
   @override
@@ -10,7 +11,6 @@ class UsuarioScreen extends StatelessWidget {
     return MaterialApp(
       title: 'Tela com Botões',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
       home: HomeScreen(),
     );
@@ -21,8 +21,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2D2D2D),
+      backgroundColor: const Color.fromRGBO(45, 45, 45, 100),
+  appBar: AppBar(
+    
+         leading: IconButton(
+            icon: Icon(Icons.arrow_left),
+            onPressed: () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Telaprincipal())
+                        //voltando a tela
+
+                        );
+            },
+          ),
+        
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text('Tela de Contatos'),
+       
+      ),
       body: Center(
+        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -111,7 +131,7 @@ class _CustomButtonState extends State<CustomButton> {
         height: 120,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: _isPressed ? Color(0xFF00FBFF) : Color(0xFF17B9BC),
+          color: _isPressed ? Color(0xFF00FBFF) : Color.fromRGBO(23, 185, 188, 100),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +160,7 @@ class ImportarContatosDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Color(0xFF2D2D2D),
+      backgroundColor: const Color.fromRGBO(45, 45, 45, 100),
       title: Text(
         'Importar contatos',
         style: TextStyle(color: Colors.white),
@@ -159,7 +179,7 @@ class ImportarContatosDialog extends StatelessWidget {
               // Ação para selecionar o arquivo
             },
             style: ElevatedButton.styleFrom(
-              primary: Color(0xFF17B9BC),
+              primary: Color.fromRGBO(23, 185, 188, 100),
             ),
             child: Text('Selecionar arquivo'),
           ),
@@ -174,7 +194,7 @@ class ImportarContatosDialog extends StatelessWidget {
                 //importar o arquivo
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF17B9BC),
+                primary: Color.fromRGBO(23, 185, 188, 100),
               ),
               child: Text('Importar'),
             ),

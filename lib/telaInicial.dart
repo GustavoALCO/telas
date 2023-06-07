@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telas/telaCadastro.dart';
-import 'package:telas/telas/telaLogin.dart';
+import 'package:telas/telaCadastro.dart';
+import 'package:telas/telaLogin.dart';
 
 class telaInicial extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _telaInicial extends State<telaInicial> {
    Widget build(BuildContext context) {
    
      return Scaffold(
-      
+    backgroundColor: Color.fromRGBO(45, 45, 45, 100),
         body: Stack(
           children: [
             Align(
@@ -50,7 +50,7 @@ class _telaInicial extends State<telaInicial> {
                   height: 45,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      
+                      backgroundColor: Color.fromRGBO(23, 185, 188, 100),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         )),
@@ -72,28 +72,27 @@ class _telaInicial extends State<telaInicial> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 680),
+              padding: EdgeInsets.only(top: 670),
               child: Center(
                 child: Container(
-                  
                   width: 300,
                   height: 45,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        
+                      backgroundColor: Color.fromRGBO(23, 185, 188, 100),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
-                        )
-                        ),
+                        )),
                     onPressed: () {
                       Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => telaCadastro()),
-                    );
+                      context,
+                      MaterialPageRoute(builder: (context) => telaCadastro()),
+                      );
                     },
                     child: Container(
+                      
                         child: Text(
-                      'Cadastre-se',
+                      'Cadastrar-se',
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -111,16 +110,7 @@ class _telaInicial extends State<telaInicial> {
 class TelaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(
-         seedColor: Color.fromRGBO(23, 185, 188, 100), 
-
-        ),
-           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
-         ),
-          
+    return MaterialApp(   
       home: telaInicial(),
     );
   }

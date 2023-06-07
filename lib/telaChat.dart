@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telas/TelaMostrarCadastro.dart';
+import 'package:telas/TelaMostrarCadastro.dart';
 
 
 class ChatMessage {
@@ -41,8 +41,9 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(45, 45, 45, 1),
     appBar: AppBar(
-      
+      backgroundColor: Color.fromRGBO(23, 185, 188, 100), 
       title: Row(
         children: [
           
@@ -131,14 +132,7 @@ class TelaChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
         
-        colorScheme: ColorScheme.fromSeed(
-         seedColor: Color.fromRGBO(23, 185, 188, 100), 
-
-        ),
-           scaffoldBackgroundColor: Color.fromRGBO(45, 45, 45, 1)
-         ),
           
       home: ChatScreen(contact: contact,),
     );

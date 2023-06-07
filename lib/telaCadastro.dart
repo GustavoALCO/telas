@@ -20,6 +20,7 @@ class _telaCadastro extends State<telaCadastro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(45, 45, 45, 100),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
     
@@ -116,7 +117,7 @@ class _telaCadastro extends State<telaCadastro> {
                   height: 50,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          
+                          backgroundColor: Color.fromRGBO(23, 185, 188, 100),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           )
@@ -125,6 +126,7 @@ class _telaCadastro extends State<telaCadastro> {
                         
                       },
                       child: Container(
+                        color: Color.fromRGBO(23, 185, 188, 100),
                           child: Text(
                         'Cadastrar',
                         style: TextStyle(

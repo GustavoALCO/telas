@@ -1,58 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:telas/TelaMostrarCadastro.dart';
 import 'package:telas/usuario.dart';
-import 'package:telas/respostas.dart';
-import 'package:telas/lista_transmissao.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tela com Botões',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/usuario': (context) => UsuarioScreen(),
-        '/respostas': (context) => RespostasScreen(),
-        '/listaTransmissao': (context) => ListaTransmissaoScreen(),
-      },
-    );
-  }
-}
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2D2D2D),
+      backgroundColor: Color.fromRGBO(45, 45, 45, 100),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomButton(
-              icon: Icons.person,
               label: 'Usuário',
+              imagePath: 'assets/images/agenda.png',
               onPressed: () {
-                Navigator.pushNamed(context, '/usuario');
+                Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UsuarioScreen())
+                        //Chamando tela de usuarios 
+
+                        );
               },
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 30),
             CustomButton(
-              icon: Icons.chat,
               label: 'Respostas',
+              imagePath: 'assets/images/Logo_Omnichan.png',
               onPressed: () {
-                Navigator.pushNamed(context, '/respostas');
+                Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TelaContato())
+                        //Chamando tela de respostas 
+
+                        );
               },
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 30),
             CustomButton(
-              icon: Icons.list,
               label: 'Lista de Transmissão',
+              imagePath: 'assets/images/anuncios.png',
               onPressed: () {
-                Navigator.pushNamed(context, '/listaTransmissao');
+                Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TelaContato())
+                        //Chamando tela de Transmissao 
+
+                        );
               },
             ),
           ],
@@ -62,69 +56,57 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class CustomButton extends StatefulWidget {
-  final IconData icon;
+class CustomButton extends StatelessWidget {
   final String label;
+  final String imagePath;
   final VoidCallback onPressed;
 
   const CustomButton({
-    required this.icon,
     required this.label,
+    required this.imagePath,
     required this.onPressed,
   });
 
   @override
-  _CustomButtonState createState() => _CustomButtonState();
-}
-
-class _CustomButtonState extends State<CustomButton> {
-  bool _isPressed = false;
-
-  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          _isPressed = true;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          _isPressed = false;
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          _isPressed = false;
-        });
-      },
-      onTap: widget.onPressed,
-      child: Container(
-        width: 120,
-        height: 120,
-        decoration: BoxDecoration(
-          color: _isPressed ? Color(0xFF00FBFF) : Color(0xFF17B9BC),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              widget.icon,
-              color: Colors.white,
-              size: 48,
-            ),
-            SizedBox(height: 8),
-            Text(
-              widget.label,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+    return Column(
+      children: [
+        Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(23, 185, 188, 100),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: GestureDetector(
+            onTap: onPressed,
+            child: Center(
+              child: Image.asset(
+                imagePath,
+                width: 100,
+                height: 100,
               ),
             ),
-          ],
+          ),
         ),
-      ),
+        SizedBox(height: 8),
+        Text(
+          label,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Telaprincipal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeScreen(),
     );
   }
 }

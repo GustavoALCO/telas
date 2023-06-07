@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telas/TelaMostrarCadastro.dart';
+
+import 'telaprincipal.dart';
 
 
 
@@ -16,6 +17,7 @@ class _telaLogin extends  State<telaLogin> {
     final TextEditingController senhaController = TextEditingController();
        
       return Scaffold(
+        backgroundColor: const Color.fromRGBO(45, 45, 45, 100),
   appBar: AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -93,15 +95,18 @@ class _telaLogin extends  State<telaLogin> {
                   height: 45,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        
+                        backgroundColor: const Color.fromRGBO(23, 185, 188, 100),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         )),
                     onPressed: () {
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => telaContato())
-                      );
+
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Telaprincipal())
+                        //CHAMAR TELA PRINCIPAL
+
+                        );
                       
                     },
                     child:  const Text(
