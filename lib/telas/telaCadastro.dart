@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class telaCadastro extends StatefulWidget {
   @override
   _telaCadastro createState() => _telaCadastro();
@@ -11,11 +12,8 @@ class _telaCadastro extends State<telaCadastro> {
   
   @override
      
-     final TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
-  final TextEditingController dataNascimentoController =
-      TextEditingController();
-  final TextEditingController nomeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +31,7 @@ class _telaCadastro extends State<telaCadastro> {
           children: [
             TextField(
               controller: emailController,
+
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                                   labelText: "Email",
@@ -51,6 +50,7 @@ class _telaCadastro extends State<telaCadastro> {
               padding: EdgeInsets.only(top: 30),
               child: TextField(
                 controller: senhaController,
+
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                                     labelText: "Senha",
@@ -66,48 +66,6 @@ class _telaCadastro extends State<telaCadastro> {
                 obscureText: true,
               ),
             ),
-        
-            Container(
-              padding: EdgeInsets.only(top: 30),
-              child: TextField( 
-                controller: dataNascimentoController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                                    labelText: "Data De Nascimento",
-                                    labelStyle: TextStyle(color: Colors.white),
-                                    contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                                    
-                            
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                  ),
-                   
-                keyboardType: TextInputType.datetime,
-              ),
-            ),
-           
-            Container(
-              padding: EdgeInsets.only(top: 30),
-              child: TextField(
-                controller: nomeController,
-                style: TextStyle(color: Colors.white),
-               decoration: InputDecoration(
-                                    labelText: "Nome",
-                                    labelStyle: TextStyle(color: Colors.white),
-                                    contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-                                    
-                            
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                  ),
-                  
-              ),
-            ),
-            
             Container(
               padding: EdgeInsets.only(top: 50),
               child: Center(
@@ -123,7 +81,11 @@ class _telaCadastro extends State<telaCadastro> {
                           )
                           ),
                       onPressed: () {
-                        
+                        //botão para cadastrar novo usuario
+                      String email = emailController.text;
+                      String senha = senhaController.text;
+
+
                       },
                       child: Container(
                         color: Color.fromRGBO(23, 185, 188, 100),

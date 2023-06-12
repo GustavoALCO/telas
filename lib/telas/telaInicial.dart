@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telaCadastro.dart';
-import 'package:telas/telaLogin.dart';
+import 'package:telas/telas/telaCadastro.dart';
+import 'package:telas/telas/telaLogin.dart';
 
 class telaInicial extends StatefulWidget {
   @override

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:telas/TelaMostrarCadastro.dart';
+import 'package:telas/telas/TelaMostrarCadastro.dart';
+
+import '../entidades/chatMensager.dart';
+import '../entidades/contact.dart';
 
 
-class ChatMessage {
-  final String sender;
-  final String content;
 
-  ChatMessage({required this.sender, required this.content});
-}
 
 class ChatScreen extends StatefulWidget {
  final Contact contact;
-
+  
   ChatScreen({required this.contact});
 
   @override
@@ -33,9 +31,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
     setState(() {
       _messages.insert(0, ChatMessage(sender: 'User', content: text));
-      _messages.insert(0,
-          ChatMessage(sender: widget.contact.name, content: 'Hello! How are you?'));
-    });
+      _messages.insert(0,                               //mensagem do usuario
+          ChatMessage(sender: widget.contact.name, content: 'Ola como vai você '));
+    });                         //nome do cliente            mensagem do  cliente
   }
 
   @override
@@ -46,7 +44,16 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: Color.fromRGBO(23, 185, 188, 100), 
       title: Row(
         children: [
-          
+            IconButton(
+            icon: Icon(Icons.arrow_left),
+            onPressed: () {
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => telaContato())
+                        //voltando a tela
+                        );
+            },
+          ),
           CircleAvatar(
             backgroundImage: AssetImage(widget.contact.photo),
           ),
@@ -128,6 +135,7 @@ class _ChatScreenState extends State<ChatScreen> {
 class TelaChat extends StatelessWidget {
   final Contact contact;
 
+  
   TelaChat({required this.contact});
   @override
   Widget build(BuildContext context) {

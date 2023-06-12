@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:telas/telaprincipal.dart';
-import 'cadastrar_contatos.dart';
-import 'mostrar_contatos.dart';
-
-
+import 'package:telas/telas/cadastrar_contatos.dart';
+import 'package:telas/telas/mostrar_contatos.dart';
+import 'package:telas/telas/telaprincipal.dart';
 
 class UsuarioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tela com Botões',
-      theme: ThemeData(
-      ),
+      theme: ThemeData(),
       home: HomeScreen(),
     );
   }
@@ -22,27 +19,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(45, 45, 45, 100),
-  appBar: AppBar(
-    
-         leading: IconButton(
-            icon: Icon(Icons.arrow_left),
-            onPressed: () {
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Telaprincipal())
-                        //voltando a tela
-
-                        );
-            },
-          ),
-        
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_left),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Telaprincipal())),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Tela de Contatos'),
-       
+        title: const Text('Tela de Contatos'),
       ),
       body: Center(
-        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -56,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             CustomButton(
               icon: Icons.person_add,
               label: 'Cadastrar contatos',
@@ -69,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             CustomButton(
               icon: Icons.contacts,
               label: 'Mostrar contatos',
@@ -131,7 +117,9 @@ class _CustomButtonState extends State<CustomButton> {
         height: 120,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: _isPressed ? Color(0xFF00FBFF) : Color.fromRGBO(23, 185, 188, 100),
+          color: _isPressed
+              ? const Color(0xFF00FBFF)
+              : const Color.fromRGBO(23, 185, 188, 100),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -141,10 +129,10 @@ class _CustomButtonState extends State<CustomButton> {
               color: Colors.white,
               size: 60,
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               widget.label,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),
@@ -161,7 +149,7 @@ class ImportarContatosDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: const Color.fromRGBO(45, 45, 45, 100),
-      title: Text(
+      title: const Text(
         'Importar contatos',
         style: TextStyle(color: Colors.white),
       ),
@@ -169,19 +157,19 @@ class ImportarContatosDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Para importar os contatos, selecione um arquivo CSV ou Vcard.',
             style: TextStyle(color: Colors.white),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
               // Ação para selecionar o arquivo
             },
             style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(23, 185, 188, 100),
+              primary:  const Color.fromRGBO(23, 185, 188, 100),
             ),
-            child: Text('Selecionar arquivo'),
+            child: const Text('Selecionar arquivo'),
           ),
         ],
       ),
@@ -194,11 +182,11 @@ class ImportarContatosDialog extends StatelessWidget {
                 //importar o arquivo
               },
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(23, 185, 188, 100),
+                primary: const Color.fromRGBO(23, 185, 188, 100),
               ),
-              child: Text('Importar'),
+              child: const Text('Importar'),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
@@ -206,7 +194,7 @@ class ImportarContatosDialog extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 primary: Colors.red,
               ),
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
             ),
           ],
         ),

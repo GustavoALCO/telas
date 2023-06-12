@@ -1,7 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../entidades/contact.dart';
+import '../server/client.dart';
+
 
 class CadastrarContatosScreen extends StatelessWidget {
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController telefoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,7 @@ class CadastrarContatosScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: nomeController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFA7A7A7),
@@ -29,6 +38,7 @@ class CadastrarContatosScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 TextField(
+                  controller: telefoneController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFA7A7A7),
@@ -44,6 +54,7 @@ class CadastrarContatosScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFA7A7A7),
@@ -57,43 +68,19 @@ class CadastrarContatosScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
-                TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFA7A7A7),
-                    labelText: 'Facebook',
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 16),
-                TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFA7A7A7),
-                    labelText: 'Data de Adição',
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                  onTap: () {
-                    // Ação para abrir o calendário e selecionar a data
-                  },
-                ),
                 SizedBox(height: 32),
                 ElevatedButton(
-                  onPressed: () {
-                    // Ação para cadastrar
+                  onPressed: () async {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    String? email = prefs.getString('email');
+                    String? senha = prefs.getString('senha');
+                    String telefone = telefoneController.text;
+                    String nome = nomeController.text;
+                    List<Contact> contacts = List.of([Contact(name: nome, photo: "", phone: telefone)]);
+                    if (email != null && senha != null) {
+                        print("Cadastrando contato " + email + " nome " + nome);
+                        await ServerClient.addContactsFromEmail(email, contacts);
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFF17B9BC),
